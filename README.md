@@ -10,10 +10,10 @@ A general purpose Curl class written in PHP
 
     Curl::patch(url, options, body);
 
-### Param Types
+### Parameter Types
 
 Parameter | Type | Notes
 ----------|------|-------
 url | string |
-options | array | See https://www.php.net/manual/en/function.curl-setopt.php for a list of option values
+options | array | See [here](https://www.php.net/manual/en/function.curl-setopt.php) for a list of option values
 body | array |
