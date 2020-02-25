@@ -12,9 +12,8 @@ A general purpose Curl class written in PHP
 
 ### Param Types
 
-    url -> string
-    options -> [
-        option_name => option_value
-    ]
-    See [for a list of options](https://www.php.net/manual/en/function.curl-setopt.php)
-    body -> []
+Parameter | Type | Notes
+----------|------|-------
+url | string |
+options | array | See https://www.php.net/manual/en/function.curl-setopt.php for a list of option values
+body | array |
