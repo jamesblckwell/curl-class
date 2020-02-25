@@ -45,7 +45,15 @@ class Curl{
     
         return $result;
     }
-
+    /**
+     * Initialises and executes a POST request using CURL
+     * 
+     * @param string $url The request URL
+     * @param array $options An associative array of CURLOPTs
+     * @param array $body The POST body
+     * 
+     * @return $return The return from the request
+     */
     public static function post($url, $options=[], $body = null) {
         $conn = curl_init();
 
@@ -64,7 +72,15 @@ class Curl{
         return $result;
         
     }
-
+    /**
+     * Initialises and executes a PATCH request using CURL
+     * 
+     * @param string $url The request URL
+     * @param array $options An associative array of CURLOPTs
+     * @param array $body The PATCH body
+     * 
+     * @return $return The return from the request
+     */
     public static function patch($url, $options=[], $body = null) {
         $conn = curl_init();
 
