@@ -9,17 +9,6 @@ class Curl{
         CURLOPT_TIMEOUT => 4,                                       //
     ];
 
-    public function __construct($url, $options, $req_method, $body) {
-        $this->url = $url;
-        $this->options = $options;
-
-        $this->init();
-    }
-
-    public function set_options($conn){
-        
-    }
-
     /**
      * Initialises and executes a GET request using CURL
      * 
@@ -29,22 +18,23 @@ class Curl{
      * @return $return The return from the request
      */
     public static function get($url, $options = []) {
-        $conn = curl_init();
+        self::$conn = curl_init();
 
-        curl_setopt($conn, CURLOPT_URL, $url);
-        curl_setopt_array($conn, (array) self::$defaults + (array) $options);
+        curl_setopt(self::$conn, CURLOPT_URL, $url);
+        curl_setopt_array(self::$conn, (array) self::$defaults + (array) $options);
         try {
-            $result = curl_exec($conn);
+            $result = curl_exec(self::$conn);
             if (!$result) {
                 throw new Exception();
             }
         } catch(Exception $e) {
-            echo curl_errno($conn).' - '.curl_error($conn);
+            echo curl_errno(self::$conn).' - '.curl_error(self::$conn);
         }
-        curl_close($conn);
-    
+        curl_close(self::$conn);
+
         return $result;
     }
+
     /**
      * Initialises and executes a POST request using CURL
      * 
@@ -55,23 +45,24 @@ class Curl{
      * @return $return The return from the request
      */
     public static function post($url, $options=[], $body = null) {
-        $conn = curl_init();
+        self::$conn = curl_init();
 
-        curl_setopt($conn, CURLOPT_URL, $url);
-        curl_setopt($conn, CURLOPT_POSTFIELDS, $body);
-        curl_setopt_array($conn, (array) self::$defaults + (array) $options);
+        curl_setopt(self::$conn, CURLOPT_URL, $url);
+        curl_setopt(self::$conn, CURLOPT_POSTFIELDS, $body);
+        curl_setopt_array(self::$conn, (array) self::$defaults + (array) $options);
         try {
-            $result = curl_exec($conn);
+            $result = curl_exec(self::$conn);
             if (!$result) {
                 throw new Exception();
             }
         } catch(Exception $e) {
-            echo curl_errno($conn).' - '.curl_error($conn);
+            echo curl_errno(self::$conn).' - '.curl_error(self::$conn);
         }
-        curl_close($conn);
+        curl_close(self::$conn);
         return $result;
         
     }
+
     /**
      * Initialises and executes a PATCH request using CURL
      * 
@@ -82,21 +73,22 @@ class Curl{
      * @return $return The return from the request
      */
     public static function patch($url, $options=[], $body = null) {
-        $conn = curl_init();
+        self::$conn = curl_init();
 
-        curl_setopt($conn, CURLOPT_URL, $url);
-        curl_setopt($conn, CURLOPT_POSTFIELDS, $body);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
-        curl_setopt_array($conn, (array) self::$defaults + (array) $options);
+        curl_setopt(self::$conn, CURLOPT_URL, $url);
+        curl_setopt(self::$conn, CURLOPT_POSTFIELDS, $body);
+        curl_setopt(self::$conn, CURLOPT_CUSTOMREQUEST, 'PATCH');
+        curl_setopt_array(self::$conn, (array) self::$defaults + (array) $options);
+
         try {
-            $result = curl_exec($conn);
+            $result = curl_exec(self::$conn);
             if (!$result) {
                 throw new Exception();
             }
         } catch(Exception $e) {
-            echo curl_errno($conn).' - '.curl_error($conn);
+            echo curl_errno(self::$conn).' - '.curl_error(self::$conn);
         }
-        curl_close($conn);
+        curl_close(self::$conn);
         return $result;
     }
 
