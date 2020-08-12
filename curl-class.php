@@ -15,9 +15,9 @@ if (!class_exists('Curl')) {
          * Curl::request()
          * Makes a request
          *
-         * @param string $method
-         * @param string $url
-         * @param array $options
+         * @param string $method The request method
+         * @param string $url The request target
+         * @param array $options An array of 
          * @param array $body
          * @return string
          */
