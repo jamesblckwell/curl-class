@@ -17,9 +17,10 @@ if (!class_exists('Curl')) {
          *
          * @param string $method The request method
          * @param string $url The request target
-         * @param array $options An array of 
-         * @param array $body
-         * @return string
+         * @param array $options An associative array of CURLOPTs
+         * @param array $body An array of data to pass with request
+         * 
+         * @return string $result The result
          */
         public static function request(string $method, string $url, array $options = [], array $body = []):string {
             self::$conn = curl_init();
